@@ -1,0 +1,22 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "A simple server using the lightweight Express.JS framework.",
+  "main": "index.cjs",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node index.cjs",
+    "dev": "nodemon index.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eulmdev/express-server.git"
+  },
+  "author": "Eulm Dev",
+  "license": "MIT",
+  "homepage": "https://github.com/eulmdev/express-server#readme"
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Express.JS Server</title>
+
+    <style>
+      /* import Roboto font from Google Fonts */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+      :root {
+        /* fallback gradient (colour), webkit gradient and main gradient */
+        --fb-gradient: #ff3e3e;
+        --wk-gradient: -webkit-linear-gradient(to top right, #ff3e3e, #952424);
+        --gradient: linear-gradient(to top right, #ff3e3e, #952424);
+
+        /* card styles (colours, font and size) */
+        --background: #111;
+        --text: #eee;
+
+        --size: calc(100% - 70px);
+        --max-height: 40em;
+        --max-width: 60em;
+
+        --font: 'Roboto', sans-serif;
+      }
+
+      html,
+      body {
+        /* set the fallback gradient (colour), webkit gradient and main gradient */
+        background-color: var(--fb-gradient);
+        background-image: var(--wk-gradient);
+        background-image: var(--gradient);
+
+        /* make background gradient full and centered */
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        /* boilerplate page styling to prevent browser defaults */
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        /* center the card */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        /* show a card with rounded corners */
+        background-color: var(--background);
+        border-radius: 12px;
+
+        width: var(--size);
+        height: var(--size);
+        margin: var((100% - var(--size)) / 2);
+
+        max-width: var(--max-width);
+        max-height: var(--max-height);
+
+        /* center the content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* show centered content */
+      .content {
+        color: var(--text);
+        font-family: var(--font);
+
+        text-align: center;
+      }
+
+      /* hide video player */
+      #c2 {
+        display: none;
+        height: 70%;
+        width: 70%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="content" id="c1">
+        <h1>Password:</h1>
+        <input type="password" id="password" />
+      </div>
+      <iframe
+        id="c2"
+        src=""
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </body>
+
+  <script>
+    /* get password input element and c1/c2 elements */
+    const pwd = document.getElementById('password'),
+      c1 = document.getElementById('c1'),
+      c2 = document.getElementById('c2');
+
+    /* listen to the password input element value change */
+    pwd.onchange = async () => {
+      /* send GET request to password checking API */
+      const res = await fetch(`/password?value=${pwd.value}`),
+        { video } = await res.json();
+
+      /* check if the result exists */
+      if (video) {
+        /* show the video and hide the password input */
+        c2.src = video;
+
+        c1.style.display = 'none';
+        c2.style.display = 'block';
+      } else {
+        /* say that the password is incorrect */
+        pwd.placeholder = 'Incorrect password!';
+        pwd.value = '';
+
+        setTimeout(() => (pwd.placeholder = ''), 2000);
+      }
+    };
+  </script>
+</html>
