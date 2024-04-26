@@ -20,7 +20,7 @@ You can [make a new repository](https://github.com/new?template_name=express-ser
 
 ### Configuration
 
-Once you have this, you can modify some of the configuration with the CSS variables in [index.html](/index.html) to your liking, but most importantly, you have to modify the configuration in [index.cjs](/index.cjs) (the constant `config` variable), by changing the `path`, `password` and `video` properties to match your environment and to your general liking.
+Once you have this, you can modify some of the configuration with the CSS variables in [index.html](/index.html) to your liking, but most importantly, you have to modify the configuration in [index.cjs](/index.cjs) (the constant `config` variable), by changing the `password` and `video` properties to your general liking.
 
 ### Hosting
 
