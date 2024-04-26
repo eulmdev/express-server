@@ -2,8 +2,7 @@ const express = require('express'),
   app = express();
 
 const config = {
-  // project path and port to launch to
-  path: 'ENTER YOUR PROJECT PATH HERE',
+  // project port to launch to
   port: 3000,
 
   // password to check for in /password route
@@ -18,8 +17,10 @@ const config = {
   },
 };
 
+app.use(express.static('public'));
+
 // handle GET requests to root path
-app.get('/', (req, res) => res.sendFile(`${config.path}/index.html`));
+app.get('/', (req, res) => res.sendFile(`${__dirname}/index.html`));
 
 // handle GET requests to /password
 app.get('/password', (req, res) => {
