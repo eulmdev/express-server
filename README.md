@@ -16,7 +16,7 @@ A simple server using the lightweight Express.JS framework. This is an example w
 
 ### Getting the Code
 
-You can [make a new repository](https://github.com/new?template_name=express-server&template_owner=eulmdev) for a new (public or private) repository or [download the ZIP archive](https://github.com/eulmdev/express-server/archive/refs/heads/main.zip) to download it to your device. You can also clone it using HTTPS, SSH or the GitHub CLI, but that's somewhat advanced and unnecessary for this simple example.
+You can [fork this repository](https://github.com/eulmdev/express-server/fork) for a new public repository or [download the ZIP archive](https://github.com/eulmdev/express-server/archive/refs/heads/main.zip) to download it to your device. You can also clone it using HTTPS, SSH or the GitHub CLI, but that's somewhat advanced and unnecessary for this simple example.
 
 ### Configuration
 
